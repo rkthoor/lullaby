@@ -8,3 +8,4 @@ joblib
 spotipy
 openpyxl
 python-dotenv
+xgboost
