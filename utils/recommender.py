@@ -18,13 +18,19 @@ def load_lullaby_dataset():
     """
     Load lullaby songs CSV, skipping malformed lines.
     Ensures 'spotify_link' column exists for downstream processing.
+    Handles missing file gracefully.
     """
+    import os
+    import pandas as pd
+    file_path = "data/lullaby_songs.csv"
+    if not os.path.exists(file_path):
+        # Return empty DataFrame with expected columns if file is missing
+        return pd.DataFrame(columns=["title", "artist", "spotify_link"])
     df = pd.read_csv(
-        "data/lullaby_songs.csv",
+        file_path,
         on_bad_lines="skip"
     )
     # Ensure column names are consistent
-    # Normalize original column names
     df.columns = df.columns.str.strip()
     # If 'spotify_link' missing, add it
     if 'spotify_link' not in df.columns:
