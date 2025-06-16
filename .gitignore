@@ -119,7 +119,7 @@ cython_debug/
 Thumbs.db
 
 # Data files (optional, comment out if you want to track data)
-data/*.csv
+#data/*.csv
 data/*.xlsx
 
 # Model files
